@@ -1,5 +1,6 @@
 * {
   background-color: black;
+  font-family: "Poppins", sans-serif;
 }
 
 .body {
@@ -162,7 +163,8 @@ a {
   border: 2px solid white;
 }
 
-.review-name:focus {
+.review-name:focus,
+.review-name:hover {
   outline: none;
   background-color: rgb(155, 155, 155);
   border: 2px solid rgb(155, 155, 155);
@@ -178,7 +180,8 @@ a {
   resize: none;
 }
 
-.review-comment:focus {
+.review-comment:focus,
+.review-comment:hover {
   outline: none;
   background-color: rgb(155, 155, 155);
   border: 2px solid rgb(155, 155, 155);
@@ -252,8 +255,9 @@ a {
 
 .modal > p {
   background-color: transparent;
-  font-size: 35px;
+  font-size: 32px;
   margin: 10px 0;
+  font-weight: 600;
 }
 
 .modal > input {

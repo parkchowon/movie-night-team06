@@ -58,8 +58,16 @@ const verificateInput = () => {
 
 //password 유효성 검사 함수
 const verificatePassword = () => {
+  //빈칸 등록시
   if (passwordInput.value == "") {
     alert("Please Enter the password");
+    passwordInput.focus();
+  } else if (passwordInput.value.includes(" ")) {
+    //공백 포함시
+    alert("Don't include blank spaces");
+    passwordInput.focus();
+  } else if (passwordInput.value.length < 6) {
+    alert("Please include at least 6 characters");
     passwordInput.focus();
   } else {
     registReview();
