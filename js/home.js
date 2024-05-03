@@ -74,6 +74,7 @@ export const movieCard = (item) => {
   movieMap.set(movieTitle, movieCard);
   movieCard.addEventListener("click", () => {
     window.location.href = "../page/movieDetail.html";
+    localStorage.setItem("currentID", movieId);
   });
 
   //Div안에 카드 넣기
