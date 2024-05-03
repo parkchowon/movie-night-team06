@@ -13,7 +13,7 @@ starsWrap.addEventListener("click", (e) => {
 
 /** 별 마우스 호버 */
 //마우스 호버 시 별점 채우기
-starsWrap.addEventListener("mouseenter", () => {
+starsWrap.addEventListener("mouseover", () => {
   starsList.forEach((star, idx) => {
     star.addEventListener("mouseenter", (e) => {
       removeFill();
@@ -24,6 +24,7 @@ starsWrap.addEventListener("mouseenter", () => {
 //마우스 호버를 안할 때, 전에 클릭한 곳까지
 starsWrap.addEventListener("mouseout", () => {
   if (Checked !== 0) {
+    removeFill();
     fillStar(Checked);
   } else {
     removeFill();
