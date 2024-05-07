@@ -81,6 +81,9 @@ const verificatePassword = () => {
 
 //리뷰 배열에 저장하는 함수
 const saveReview = () => {
+  const totalreviews = JSON.parse(localStorage.getItem("reviews"));
+  reviewStorage = totalreviews;
+
   const review = {
     id: Date.now(), //id 값 추가
     movieId: localStorage.getItem("currentID"),
