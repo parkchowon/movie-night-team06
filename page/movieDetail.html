@@ -25,7 +25,6 @@
     <div class="review">
       <div class="review-title">
         <p class="review-title-text">Reviews</p>
-        <p class="review-total-number">8</p>
       </div>
       <div class="review-write-box">
         <!--영은님 부분-->
@@ -65,15 +64,32 @@
         <textarea class="review-comment" placeholder="Enter the review" cols="70" rows="5" maxlength="350"></textarea>
         <button class="review-btn">Enter</button>
       </div>
+      <!--최연님부분-->
       <div class="review-list-box">
-        <!--최연님부분-->
-        <div class="review-item"></div>
-        <div class="review-item"></div>
-        <div class="review-item"></div>
+        <button id="toggle-btn">모두보기</button> 
+        <div id="review-base"></div>
+        <div id="review-toggle"></div>
+      </div>
+      <div class="pw-check">
+        <div class="modal">
+          <p>Enter the Password</p>
+          <input type="password" class="password-input" placeholder="password" maxlength="10" />
+          <button class="modal-close">X</button>
+          <button class="password-btn">Enter</button>              
+        </div>
+      </div>
+      <div class="comment-change">
+        <div class="modal">
+          <p>Enter the Comment</p>
+          <input type="text" class="password-input" placeholder="Comment" maxlength="100" />
+          <button class="modal-close">X</button>
+          <button class="password-btn">Enter</button>
+        </div>
       </div>
     </div>
     <script src="../js/movieDetail.js"></script>
     <script type="module" src="../js/reviewStar.js"></script>
     <script type="module" src="../js/reviewCreate.js"></script>
+    <script type="module" src="../js/readReview.js"></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 import { Checked } from "./reviewStar.js";
 
-let userName = document.querySelector(".review-name");
+let userName = document.querySelector(".review-name");  
 let comment = document.querySelector(".review-comment");
 let registerBtn = document.querySelector(".review-btn");
 let passwordBox = document.querySelector(".password");
@@ -82,7 +82,7 @@ const verificatePassword = () => {
 //리뷰 배열에 저장하는 함수
 const saveReview = () => {
   const totalreviews = JSON.parse(localStorage.getItem("reviews"));
-  reviewStorage = totalreviews;
+  reviewStorage = totalreviews ? JSON.parse(localStorage.getItem("reviews")) : [];
 
   const review = {
     id: Date.now(), //id 값 추가
@@ -99,6 +99,7 @@ const saveReview = () => {
 //리뷰 등록함수
 const registReview = () => {
   localStorage.setItem("reviews", JSON.stringify(reviewStorage));
+  window.location.reload()
   console.log(JSON.parse(localStorage.getItem("reviews")));
 };
 
