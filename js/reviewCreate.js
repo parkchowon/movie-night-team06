@@ -1,12 +1,14 @@
 import { Checked } from "./reviewStar.js";
 
-const userName = document.querySelector(".review-name");
-const comment = document.querySelector(".review-comment");
-const registerBtn = document.querySelector(".review-btn");
-const passwordBox = document.querySelector(".password");
-const passwordModal = document.querySelector(".modal");
-const passwordInput = document.querySelector(".password-input");
-const passwordBtn = document.querySelector(".password-btn");
+let userName = document.querySelector(".review-name");
+let comment = document.querySelector(".review-comment");
+let registerBtn = document.querySelector(".review-btn");
+let passwordBox = document.querySelector(".password");
+let passwordModal = document.querySelector(".modal");
+let passwordInput = document.querySelector(".password-input");
+let passwordBtn = document.querySelector(".password-btn");
+
+let reviewStorage = [];
 
 //review 버튼 클릭 시
 registerBtn.addEventListener("click", () => {
@@ -70,21 +72,36 @@ const verificatePassword = () => {
     alert("Please include at least 6 characters");
     passwordInput.focus();
   } else {
+    saveReview();
     registReview();
+    resetInput();
     passwordBox.classList.remove("active");
-    window.location.reload();
   }
 };
 
-//리뷰 등록 함수
-const registReview = () => {
+//리뷰 배열에 저장하는 함수
+const saveReview = () => {
   const review = {
+    id: Date.now(), //id 값 추가
     movieId: localStorage.getItem("currentID"),
     name: userName.value,
     comment: comment.value,
     star: Checked,
     password: passwordInput.value,
   };
-  localStorage.setItem(passwordInput.value, JSON.stringify(review));
-  console.log(JSON.parse(localStorage.getItem(passwordInput.value)));
+
+  reviewStorage.push(review); //배열에 review값 넣기
+};
+
+//리뷰 등록함수
+const registReview = () => {
+  localStorage.setItem("reviews", JSON.stringify(reviewStorage));
+  console.log(JSON.parse(localStorage.getItem("reviews")));
+};
+
+//input reset함수
+const resetInput = () => {
+  userName.value = "";
+  comment.value = "";
+  passwordInput.value = "";
 };
