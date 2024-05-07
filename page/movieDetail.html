@@ -13,7 +13,7 @@
     <!--로고-->
     <div class="logo">
       <img src="" />
-      <p class="logo-text">Movie Night</p>
+      <a href="../index.html"><p class="logo-text">Movie Night</p></a>
     </div>
     <!--영화 세부정보-->
     <!-- 택수님 부분 -->
@@ -29,6 +29,41 @@
       </div>
       <div class="review-write-box">
         <!--영은님 부분-->
+        <!-- password modal-->
+        <div class="password">
+          <div class="modal">
+            <p>Enter the Password</p>
+            <input type="password" class="password-input" placeholder="password" maxlength="10" />
+            <button class="password-btn">Enter</button>
+          </div>
+        </div>
+        <div class="review-head">
+          <input class="review-name" placeholder="Name" maxlength="15" />
+          <div class="star-container">
+            <label class="star-label">
+              <input value="1" class="star-radio" type="radio" />
+              <span class="star-icon"></span>
+            </label>
+            <label class="star-label">
+              <input value="2" class="star-radio" type="radio" />
+              <span class="star-icon"></span>
+            </label>
+            <label class="star-label">
+              <input value="3" class="star-radio" type="radio" />
+              <span class="star-icon"></span>
+            </label>
+            <label class="star-label">
+              <input value="4" class="star-radio" type="radio" />
+              <span class="star-icon"></span>
+            </label>
+            <label class="star-label">
+              <input value="5" class="star-radio" type="radio" />
+              <span class="star-icon"></span>
+            </label>
+          </div>
+        </div>
+        <textarea class="review-comment" placeholder="Enter the review" cols="70" rows="5" maxlength="350"></textarea>
+        <button class="review-btn">Enter</button>
       </div>
       <div class="review-list-box">
         <!--최연님부분-->
@@ -37,6 +72,8 @@
         <div class="review-item"></div>
       </div>
     </div>
-    <script type="module" src="./js/movieDetail.js"></script>
+    <script src="../js/movieDetail.js"></script>
+    <script type="module" src="../js/reviewStar.js"></script>
+    <script type="module" src="../js/reviewCreate.js"></script>
   </body>
 </html>
