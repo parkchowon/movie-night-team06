@@ -66,28 +66,33 @@
       </div>
       <!--최연님부분-->
       <div class="review-list-box">
-        <button id="toggle-btn">모두보기</button> 
+        <button id="toggle-btn">모두보기</button>
         <div id="review-base"></div>
         <div id="review-toggle"></div>
       </div>
       <div class="pw-check">
         <div class="modal">
-          <p>Enter the Password</p>
+          <div class="enter-password">
+            <p>Enter the Password</p>
+            <button class="modal-close">X</button>
+          </div>
           <input type="password" class="password-input" placeholder="password" maxlength="10" />
-          <button class="modal-close">X</button>
-          <button class="password-btn">Enter</button>              
+          <button class="password-btn">Enter</button>
         </div>
       </div>
       <div class="comment-change">
         <div class="modal">
-          <p>Enter the Comment</p>
+          <div class="enter-password">
+            <p>Enter the Comment</p>
+            <button class="modal-close">X</button>
+          </div>
           <input type="text" class="password-input" placeholder="Comment" maxlength="100" />
-          <button class="modal-close">X</button>
           <button class="password-btn">Enter</button>
         </div>
       </div>
     </div>
     <script src="../js/movieDetail.js"></script>
+    <script type="module" src="../js/readReview.js"></script>
     <script type="module" src="../js/reviewStar.js"></script>
     <script type="module" src="../js/reviewCreate.js"></script>
     <script type="module" src="../js/readReview.js"></script>

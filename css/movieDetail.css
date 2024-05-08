@@ -217,7 +217,7 @@ a {
 }
 
 .review-list-box button {
-  color: white; 
+  color: white;
   position: absolute;
   right: 20px;
   top: 10px;
@@ -242,7 +242,7 @@ a {
 }
 
 .review-item span,
-.review-item p {  
+.review-item p {
   background-color: transparent;
 }
 
@@ -257,7 +257,7 @@ a {
 }
 
 .review-item img {
-  background-color: transparent;  
+  background-color: transparent;
   border-radius: 100%;
   width: 40px;
   height: 40px;
@@ -267,7 +267,7 @@ a {
   left: 50;
 }
 
-#review-toggle {  
+#review-toggle {
   visibility: hidden;
   opacity: 0%;
   transform: translateX(-100px);
@@ -321,7 +321,7 @@ a {
   align-items: center;
 }
 
-.modal > p {
+.enter-password > p {
   background-color: transparent;
   font-size: 32px;
   margin: 10px 0;
@@ -358,6 +358,21 @@ a {
   color: white;
 }
 
+.enter-password {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.modal-close {
+  background-color: white;
+  border: transparent;
+  font-size: 25px;
+  font-weight: bold;
+}
+
 .btns {
   display: flex;
   background-color: transparent;
@@ -375,4 +390,3 @@ a {
   margin-left: 5px;
   padding: 0;
 }
-
