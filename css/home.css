@@ -2,11 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: black;
 }
 
 body {
-  -ms-overflow-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
 }
 
 ::-webkit-scrollbar {
@@ -21,7 +23,7 @@ body {
 .main {
   align-items: center;
   width: 100%;
-  height: 100dvh;
+  height: 50vh;
 }
 
 .header {
@@ -29,7 +31,7 @@ body {
   height: 105px;
   display: flex;
   justify-content: center;
-  top: 26%;
+  top: 18%;
   padding: 0 5% 0 5%;
   position: absolute;
 }
@@ -60,7 +62,7 @@ body {
 }
 
 .header-all-movie-list-btn:hover {
-  color: red;
+  color: rgb(229, 255, 0);
   cursor: pointer;
 }
 
@@ -72,7 +74,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  top: 39%;
+  top: 30%;
   position: absolute;
 }
 
@@ -90,6 +92,8 @@ body {
   border-radius: 25px;
   border: 2px solid rgb(145, 145, 145);
   background-color: rgb(145, 145, 145);
+  position: relative;
+  z-index: 3;
 }
 
 .search-extend:hover {
@@ -120,17 +124,21 @@ body {
 
 #similarTitle {
   padding: 0 6%;
-  background-color: transparent;
+  background-color: rgb(145, 145, 145);
+  position: relative;
+  z-index: 2;
+  border-radius: 0 0 25px 25px;
 }
+
 .similar-title {
   height: 48px;
   display: flex;
   align-items: center;
-  background-color: transparent;
+  display: flex;
+  align-items: center;
 }
 
 .similar-title > p {
-  background-color: transparent;
   color: white;
 }
 
@@ -206,7 +214,7 @@ body {
 }
 
 .card-title {
-  font-size: 30px;
+  font-size: 27px;
   color: white;
   align-items: start;
   margin-right: auto;
@@ -230,6 +238,7 @@ body {
   color: white;
   margin-bottom: 10px;
 }
+
 .vote-div {
   margin-right: auto;
   display: flex;
@@ -241,6 +250,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .notfound-div > p {
   font-size: 40px;
   color: white;
