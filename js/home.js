@@ -19,14 +19,17 @@ const makeCard = () => {
 };
 
 //전체보기 클릭 시
+const movieCardsDiv = document.getElementById("cardsDiv");
 const allMovieListBtn = document.getElementById("showAllMoive");
 allMovieListBtn.addEventListener("click", () => {
+  movieCardsDiv.style.display = "grid";
   div.replaceChildren();
   moveDiv();
   cardDiv.replaceChildren();
   showCategory();
   makeCard();
 });
+
 
 //엔터 누를 시
 let inputText = document.getElementById("searchInput");
@@ -35,6 +38,9 @@ inputText.addEventListener("keydown", (e) => {
     e.preventDefault();
     div.replaceChildren();
     if (inputText.value !== "") {
+      // 초기화면에서 검색 버튼 클릭 시 card-section-container 숨기기 05/08 재영추가
+      document.querySelector(".card-section-container").style.display = "none";
+
       moveDiv();
       showCategory();
       showMoiveCard();
@@ -93,10 +99,14 @@ const showMoiveCard = () => {
       cardDiv.appendChild(movieMap.get(movieTitle));
     }
   });
+
+  // 검색 결과가 없는 경우 처리 05/08 재영추가
+  if (cardDiv.children.length === 0) {
+    notFound();
+  }
 };
 
 /** 검색 기능 구현 */
-
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 const boxDiv = document.getElementById("similarTitle");
@@ -107,6 +117,9 @@ searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
   let inputText = document.getElementById("searchInput").value;
   if (inputText !== "") {
+
+    // 초기화면에서 검색 버튼 클릭 시 card-section-container 숨기기 05/08 재영추가
+    document.querySelector(".card-section-container").style.display = "none";
     div.replaceChildren();
     moveDiv();
     showCategory();
