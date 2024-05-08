@@ -62,33 +62,38 @@ toggleBtn.addEventListener("click", function () {
   }
 });
 
+// 수정&삭제 part 
+let dataId
+let parameter2
+document.querySelector(".pw-check .password-btn").addEventListener("click", () => {
+  checkPassword();
+});
+  
 //수정, 삭제 버튼 작동
 let eventDeleg = document.querySelector(".review-list-box"); //이벤트 위임
 eventDeleg.addEventListener("click", function (event) {
-  let dataId = event.target.closest(".review-item").id; //모달창에 수정중인 내용의 작성자 id를 data-id로 추가
+  dataId = event.target.closest(".review-item").id; //모달창에 수정중인 내용의 작성자 id를 data-id로 추가
 
   if (event.target.matches(".editBtn")) {
     //수정버튼 눌렀을 경우
     openModal("pwCheck");
-    InputEnterToCheckPassword(dataId, "editReivew"); //엔터를 눌렀을 때 실행이 되야 할 로직
+    parameter2 = "editReivew";
   } else if (event.target.matches(".deletBtn")) {
     //삭제버튼 눌렀을 경우(삭제 버튼 만들어서 클래스 deletBtn)
     openModal("pwCheck");
-    InputEnterToCheckPassword(dataId, "deletReivew");
+    parameter2 = "deletReivew";
   } else {
     return; // 수정, 삭제 버튼을 누른게 아니면 패스
   }
 });
 
-let checkPassword = function (dataId, nextFunctionType) {
-  console.log(dataId);
+let checkPassword = function () {
   let pwInput = document.querySelector(".pw-check .password-input");
   //id 값이 dataId인 obj의 password 값
   let idPw = reviewArr.find((el) => el.id === parseInt(dataId));
-  console.log(idPw);
   if (pwInput.value === idPw.password) {
     //입력받은 값과 현재 이용중인 userid와 상응하는 pw가 맞는지 확인
-    nextFunction(dataId, nextFunctionType);
+    nextFunction();
   } else {
     alert("Password is not correct");
   }
@@ -96,19 +101,19 @@ let checkPassword = function (dataId, nextFunctionType) {
 };
 
 //다음 함수로 이동
-let nextFunction = function (dataId, nextFunctionType) {
-  if (nextFunctionType === "editReivew") {
+let nextFunction = function () {
+  if (parameter2 === "editReivew") {
     openModal("modifiedCommentInput"); //수정할 코멘트 값 받고 #132 사용해서 넘어가기 (input 받고 enter 후에 수정시키기W)
-    InputEnterToEditReview(dataId);
+    InputEnterToEditReview();
   } else {
     //"deletReview" 경우
-    deletReivew(dataId);
+    deletReivew();
     closeModal();
   }
 };
 
 //review 수정 function
-let editReivew = function (dataId) {
+let editReivew = function () {
   let modifiedComment = document.querySelector(".comment-change input");
   let newArr = reviewArr.map(function (el) {
     if (el.id === parseInt(dataId)) {
@@ -124,22 +129,15 @@ let editReivew = function (dataId) {
 };
 
 //review 삭제 function
-let deletReivew = function (dataId) {
+let deletReivew = function () {
   localStorage.setItem("reviews", JSON.stringify(reviewArr.filter((el) => el.id !== parseInt(dataId))));
   window.location.reload();
 };
 
-//pw input창 enter 누르면 모달 지우고 pw 확인
-let InputEnterToCheckPassword = function (dataId, nextFunctionType) {
-  document.querySelector(".pw-check .password-btn").addEventListener("click", () => {
-    checkPassword(dataId, nextFunctionType);
-  });
-};
-
 //comment input창 enter 누르면 모달 지우고 editReview
-let InputEnterToEditReview = function (dataId) {
+let InputEnterToEditReview = function () {
   document.querySelector(".comment-change .password-btn").addEventListener("click", function () {
-    editReivew(dataId);
+    editReivew();
     closeModal();
   });
 }; //--------여기서 comment input창 enter 누른 후의 행동은 결정되어 있지만 X를 눌렀을 때의 행동이 결정되어있지 않음 ----------->
