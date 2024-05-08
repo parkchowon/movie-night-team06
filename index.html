@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Night</title>
     <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/slider.css" />
     <link rel="stylesheet" href="./css/home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,6 +39,15 @@
           <button id="searchBtn" class="search-box-btn">SEARCH</button>
         </form>
       </div>
+      <!-- 슬라이드에 사용하는 영화 리스트 -->
+      <div id="containerToHide"></div>
+      <div class="card-section-container">
+      <button id="moveLeftButton">&lt;</button>
+      <button id="moveRightButton">&gt;</button>
+      <div id="cardSection1" class="card-section"></div>       
+      <div id="cardSection2" class="card-section"></div>    
+      </div>
+      </div>
       <!-- 영화 리스트 -->
       <div id="cardDiv" class="movie-container">
         <div id="category" class="movie-category">
@@ -47,6 +57,7 @@
         <div id="cardsDiv" class="movie-cards-div"></div>
       </div>
     </div>
+    <script type="module" src="./js/slider.js"></script>
     <script type="module" src="./js/home.js"></script>
   </body>
 </html>
