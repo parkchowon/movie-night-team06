@@ -8,6 +8,7 @@ let cardDiv = document.getElementById("cardsDiv"); //card들을 넣을 div
 //api 받아옴
 getApi().then(() => {
   makeCard();
+  cardDiv.replaceChildren();
 });
 
 //movieArr값 movieCard에 넣기
