@@ -87,6 +87,7 @@ a {
 .rating {
   color: white;
   text-align: right;
+  margin-top: 150px;
 }
 
 .genre {
@@ -107,7 +108,7 @@ a {
 
 .summary {
   color: white;
-  margin-top: 150px;
+  margin-top: 10px;
   margin-bottom: 10px;
   border-top: 1px solid white; /* 1px 두께의 회색 직선 */
   padding-top: 10px; /* 직선과 텍스트 사이에 간격 추가 */
