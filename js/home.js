@@ -7,12 +7,6 @@ let movieMap = new Map(); //movie 카드 저장할 map
 let cardDiv = document.getElementById("cardsDiv"); //card들을 넣을 div
 let movieArr = [];
 
-// //api 받아옴
-// getApi().then(() => {
-//   makeCard();
-//   cardDiv.replaceChildren();
-// });
-
 for (let i = 1; i <= 10; i++) {
   fetchMovieData(i)
     .then((data) => {
@@ -45,7 +39,6 @@ allMovieListBtn.addEventListener("click", () => {
   showCategory();
   makeCard();
 });
-
 
 //엔터 누를 시
 let inputText = document.getElementById("searchInput");
@@ -133,7 +126,6 @@ searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
   let inputText = document.getElementById("searchInput").value;
   if (inputText !== "") {
-
     // 초기화면에서 검색 버튼 클릭 시 card-section-container 숨기기 05/08 재영추가
     document.querySelector(".card-section-container").style.display = "none";
     div.replaceChildren();
@@ -165,7 +157,7 @@ searchInput.addEventListener("input", () => {
     }
   });
 
-//연관검색어 5개까지
+  //연관검색어 5개까지
   if (similarTitle.length > 5) {
     for (let i = 0; i < 5; i++) {
       similar(similarTitle[i]);
@@ -211,7 +203,7 @@ voteOrder.addEventListener("click", () => {
     cardDiv.appendChild(movieMap.get(i[0]));
   });
 
-  voteOrder.style.color = "red";
+  voteOrder.style.color = "yellow";
   nameOrder.style.color = "white";
 });
 
@@ -228,5 +220,5 @@ nameOrder.addEventListener("click", () => {
   });
 
   voteOrder.style.color = "white";
-  nameOrder.style.color = "red";
+  nameOrder.style.color = "yellow";
 });

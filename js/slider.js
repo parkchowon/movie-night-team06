@@ -1,18 +1,9 @@
-// import getApi from "./apis.js";
-// import { movieArr } from "./apis.js";
 import { fetchMovieData } from "./apis.js";
 let movieArr = [];
 let cardDiv = document.getElementById("cardsDiv"); // card들을 넣을 div
 
-
 // see all 버튼 가져오기
 const allMovieListBtn = document.getElementById("showAllMoive");
-
-// api 받아옴
-// getApi().then(() => {
-//   makeCard();
-//   initialCards();
-// });
 
 fetchMovieData(1)
   .then((data) => {
@@ -29,7 +20,7 @@ fetchMovieData(1)
     console.error("Error fetching movie data:", error);
   });
 
-  //see all 버튼 클릭 시 이벤트 처리
+//see all 버튼 클릭 시 이벤트 처리
 allMovieListBtn.addEventListener("click", () => {
   // 숨길 요소 가져오기
   const containerToHide = document.getElementById("containerToHide");
@@ -131,10 +122,3 @@ export const movieCard = (item) => {
   // Div안에 카드 넣기
   cardDiv.appendChild(movieCard);
 };
-
-
-
-
-
-
-
