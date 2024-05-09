@@ -1,15 +1,30 @@
-import getApi from "./apis.js";
-import { movieArr } from "./apis.js";
+// import getApi from "./apis.js";
+// import { movieArr } from "./apis.js";
+import { fetchMovieData } from "./apis.js";
 import { showCategory, moveDiv, similar, notFound } from "./assets.js";
 import { div } from "./assets.js";
 let movieMap = new Map(); //movie 카드 저장할 map
 let cardDiv = document.getElementById("cardsDiv"); //card들을 넣을 div
+let movieArr = [];
 
-//api 받아옴
-getApi().then(() => {
-  makeCard();
-  cardDiv.replaceChildren();
-});
+// //api 받아옴
+// getApi().then(() => {
+//   makeCard();
+
+//   cardDiv.replaceChildren();
+// });
+
+for (let i = 1; i <= 10; i++) {
+  fetchMovieData(i)
+    .then((data) => {
+      data.forEach((e) => {
+        movieArr.push(e);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching movie data:", error);
+    });
+}
 
 //movieArr값 movieCard에 넣기
 const makeCard = () => {
@@ -149,7 +164,7 @@ searchInput.addEventListener("input", () => {
     }
   });
 
-  //연관검색어 5개까지
+//연관검색어 5개까지
   if (similarTitle.length > 5) {
     for (let i = 0; i < 5; i++) {
       similar(similarTitle[i]);

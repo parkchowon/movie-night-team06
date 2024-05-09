@@ -1,33 +1,46 @@
-import getApi from "./apis.js";
-import { movieArr } from "./apis.js";
+// import getApi from "./apis.js";
+// import { movieArr } from "./apis.js";
+import { fetchMovieData } from "./apis.js";
+let movieArr = [];
 let cardDiv = document.getElementById("cardsDiv"); // card들을 넣을 div
+
 
 // see all 버튼 가져오기
 const allMovieListBtn = document.getElementById("showAllMoive");
 
 // api 받아옴
-getApi().then(() => {
-  makeCard();
-  initialCards();
-});
+// getApi().then(() => {
+//   makeCard();
+//   initialCards();
+// });
 
-// see all 버튼 클릭 시 이벤트 처리
+fetchMovieData(1)
+  .then((data) => {
+    // Handle the fetched movie data here
+    data.forEach((e) => {
+      movieArr.push(e);
+    });
+    makeCard();
+    initialCards();
+    cardDiv.replaceChildren();
+    console.log(movieArr);
+  })
+  .catch((error) => {
+    console.error("Error fetching movie data:", error);
+  });
+
+  //see all 버튼 클릭 시 이벤트 처리
 allMovieListBtn.addEventListener("click", () => {
   // 숨길 요소 가져오기
   const containerToHide = document.getElementById("containerToHide");
   const cardSectionContainer = document.querySelector(".card-section-container");
-  
+
   // 요소 숨기기
   containerToHide.style.display = "none";
   cardSectionContainer.style.display = "none";
-  
-  // 나머지 기능 수행 (필요에 따라 수정 필요)
-  // div.replaceChildren();
-  // moveDiv();
-  // cardDiv.replaceChildren();
-  // showCategory();
+
   animation();
-  makeCard();  
+  makeCard();
 });
 
 // movieArr값 movieCard에 넣기
@@ -45,11 +58,11 @@ const moveRightButton = document.getElementById("moveRightButton");
 // 왼쪽 버튼 클릭 시 이벤트 처리
 moveLeftButton.addEventListener("click", () => {
   const cardSection1 = document.getElementById("cardSection1");
-  const cardSection2 = document.getElementById("cardSection2");  
+  const cardSection2 = document.getElementById("cardSection2");
 
   cardSection1.style.animation = "slideToLeft 1.5s ease-in-out forwards";
   cardSection2.style.animation = "slideToLeft 1.5s ease-in-out forwards";
-  
+
   // 왼쪽으로 이동하도록 스타일을 변경합니다.
   cardSection1.style.order = "1";
   cardSection2.style.order = "2";
@@ -59,7 +72,7 @@ moveLeftButton.addEventListener("click", () => {
 moveRightButton.addEventListener("click", () => {
   const cardSection1 = document.getElementById("cardSection1");
   const cardSection2 = document.getElementById("cardSection2");
-  
+
   cardSection1.style.animation = "slideToRight 1.5s ease-in-out forwards";
   cardSection2.style.animation = "slideToRight 1.5s ease-in-out forwards";
 
@@ -67,7 +80,6 @@ moveRightButton.addEventListener("click", () => {
   cardSection1.style.order = "2";
   cardSection2.style.order = "1";
 });
-
 
 // 랜딩페이지에서만 5장만 나오도록 함 (05/03 재영 수정)
 const initialCards = () => {
@@ -100,7 +112,7 @@ const initialCards = () => {
 
 export const movieCard = (item) => {
   let movieTitle = item.name;
-  let moviePoster = item.poster_path;  
+  let moviePoster = item.poster_path;
   let movieVote = item.vote_average;
 
   let movieCard = document.createElement("slide-image");
@@ -119,4 +131,10 @@ export const movieCard = (item) => {
   // Div안에 카드 넣기
   cardDiv.appendChild(movieCard);
 };
+
+
+
+
+
+
 
