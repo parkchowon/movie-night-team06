@@ -1,8 +1,8 @@
-//기본전제
+//reviewRUD.js에서 사용할 리뷰 배열
 let reviewArr = localStorage.getItem("reviews") ? JSON.parse(localStorage.getItem("reviews")) : [];
 let nowArr = reviewArr.filter((el) => el.movieId === localStorage.getItem("currentID"));
 
-//리뷰 개수
+//리뷰 개수 표시
 let reviewLen = nowArr.length;
 let temp_html = `<p class="review-total-number">${reviewLen}</p>`;
 document.querySelector(".review-title").insertAdjacentHTML("beforeend", temp_html);
@@ -17,14 +17,14 @@ let makeReview = function (locationId, i) {
     4: `../moon_icon/moon5.png`,
     5: `../moon_icon/moon6.png`,
   };
-  let present = nowArr[i]; // 윗쪽 len에서 사용한 선별된 것들 중 i번 부터 s
+  let present = nowArr[i]; 
   if (!present) return; //값이 unD or null 값이 와도 프로그램이 깨지지 않도록 함수 중간에서 리턴 시켜 중단
   let name = present.name;
   let comment = present.comment;
   let starNum = present.star;
   let userId = present.id;
   let star = starObj[starNum];
-  //<----<button>삭제</button> 겹쳐서 일단 빼둠 후에 추가해서 css 만져서 수정하기----------------------------------------->ㄴ
+  
   let temp_html = `  
     <div class = "review-item" id = "${userId}">
       <span>${name} <img src = ${star} /></span>   
@@ -38,7 +38,7 @@ let makeReview = function (locationId, i) {
   document.getElementById(locationId).insertAdjacentHTML("beforeend", temp_html);
 };
 
-//리뷰 보여주기
+//리뷰 만드는 함수 작동
 window.onload = function () {
   for (let i = 0; i < 3; i++) {
     makeReview("review-base", i);
@@ -65,6 +65,8 @@ toggleBtn.addEventListener("click", function () {
 // 수정&삭제 part 
 let dataId
 let parameter2
+
+//pwCheck modal창의 enter를 누르면 비밀번호 확인 함수로 넘어가게 지정
 document.querySelector(".pw-check .password-btn").addEventListener("click", () => {
   checkPassword();
 });
@@ -72,14 +74,12 @@ document.querySelector(".pw-check .password-btn").addEventListener("click", () =
 //수정, 삭제 버튼 작동
 let eventDeleg = document.querySelector(".review-list-box"); //이벤트 위임
 eventDeleg.addEventListener("click", function (event) {
-  dataId = event.target.closest(".review-item").id; //모달창에 수정중인 내용의 작성자 id를 data-id로 추가
+  dataId = event.target.closest(".review-item").id; 
 
-  if (event.target.matches(".editBtn")) {
-    //수정버튼 눌렀을 경우
+  if (event.target.matches(".editBtn")) {   //수정버튼 눌렀을 경우
     openModal("pwCheck");
     parameter2 = "editReivew";
-  } else if (event.target.matches(".deletBtn")) {
-    //삭제버튼 눌렀을 경우(삭제 버튼 만들어서 클래스 deletBtn)
+  } else if (event.target.matches(".deletBtn")) {   //삭제버튼 눌렀을 경우
     openModal("pwCheck");
     parameter2 = "deletReivew";
   } else {
@@ -87,12 +87,11 @@ eventDeleg.addEventListener("click", function (event) {
   }
 });
 
-let checkPassword = function () {
+//패스워드 확인
+let checkPassword = function () {  
   let pwInput = document.querySelector(".pw-check .password-input");
-  //id 값이 dataId인 obj의 password 값
   let idPw = reviewArr.find((el) => el.id === parseInt(dataId));
   if (pwInput.value === idPw.password) {
-    //입력받은 값과 현재 이용중인 userid와 상응하는 pw가 맞는지 확인
     nextFunction();
   } else {
     alert("Password is not correct");
@@ -100,13 +99,12 @@ let checkPassword = function () {
   pwInput.value = "";
 };
 
-//다음 함수로 이동
+//수정 or 삭제 함수로 이동
 let nextFunction = function () {
   if (parameter2 === "editReivew") {
-    openModal("modifiedCommentInput"); //수정할 코멘트 값 받고 #132 사용해서 넘어가기 (input 받고 enter 후에 수정시키기W)
-    InputEnterToEditReview();
-  } else {
-    //"deletReview" 경우
+    openModal("modifiedCommentInput");
+    commentEnterAfterEdit();
+  } else {  //"deletReview" 경우
     deletReivew();
     closeModal();
   }
@@ -123,7 +121,6 @@ let editReivew = function () {
       return el;
     }
   });
-  //let reviewArr = newArr : 이 경우 함수 안에서 선언되었기에 밖으로 나가면 ef X
   localStorage.setItem("reviews", JSON.stringify(newArr));
   window.location.reload();
 };
@@ -134,13 +131,13 @@ let deletReivew = function () {
   window.location.reload();
 };
 
-//comment input창 enter 누르면 모달 지우고 editReview
-let InputEnterToEditReview = function () {
+//comment input창 enter 누른 후에 edit function & closeModal 작동
+let commentEnterAfterEdit = function () {
   document.querySelector(".comment-change .password-btn").addEventListener("click", function () {
     editReivew();
     closeModal();
-  });
-}; //--------여기서 comment input창 enter 누른 후의 행동은 결정되어 있지만 X를 눌렀을 때의 행동이 결정되어있지 않음 ----------->
+  });  
+}; 
 
 //모달창 띄우기
 let openModal = function (modalType) {
