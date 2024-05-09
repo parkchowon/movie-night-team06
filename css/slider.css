@@ -1,0 +1,85 @@
+.card-section-container {
+    display: flex;
+    position: absolute;
+    width: 100%;  
+    object-fit: none;
+    margin: 5px auto 0 auto;
+    z-index: 1;
+  } 
+  
+  @keyframes slideToRight {
+    from {
+      transform: translateX(100%);
+    }
+    /* to {
+      transform: translateX(-4rem);
+    } */
+  }
+  
+  @keyframes slideToLeft {
+    from {
+      transform: translateX(100%);
+    }
+    /* to {
+      transform: translateX(90%);
+    }  */
+  }
+  
+  
+  #cardSection1 {
+    background-color: transparent;
+    width: 200%;
+    padding: 0 10%;  
+    display: flex; 
+    flex-grow: 1;
+    /* animation: slideToLeft 1s ease-in-out forwards; 왼쪽으로 이동하는 애니메이션 적용 */
+    
+  }
+  
+  #cardSection2 {
+    background-color: transparent;
+    width: 200%;
+    padding: 0 10%;  
+    display: flex; 
+    flex-grow: 1;
+    /* animation: slideToRight 2s ease-in-out forwards; 오른쪽으로 이동하는 애니메이션 적용 */
+    
+  }
+    
+  /* 왼쪽, 오른쪽 버튼 스타일링 */
+  #moveLeftButton,
+  #moveRightButton {
+    position: absolute;
+    z-index: 2000; 
+    top: 30%;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    margin: 35px;
+    font-size: 45px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    transition: color 1s ease; /* 색 변화를 부드럽게 만들기 위한 transition 추가 */
+  }
+  
+  #moveLeftButton {
+    left: 0;
+    
+  }
+  
+  #moveRightButton {
+    right: 0;
+    
+  }
+  
+  #moveLeftButton:hover,
+  #moveRightButton:hover {
+    color: rgb(229, 255, 0); /* 버튼에 마우스를 올렸을 때 글자색 변경 */
+  }
+  
+  .custom-card {
+    width: 310px;
+    height: 400px;    
+  }
+  

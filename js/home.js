@@ -1,14 +1,31 @@
-import getApi from "./apis.js";
-import { movieArr } from "./apis.js";
+// import getApi from "./apis.js";
+// import { movieArr } from "./apis.js";
+import { fetchMovieData } from "./apis.js";
 import { showCategory, moveDiv, similar, notFound } from "./assets.js";
 import { div } from "./assets.js";
 let movieMap = new Map(); //movie 카드 저장할 map
 let cardDiv = document.getElementById("cardsDiv"); //card들을 넣을 div
+let movieArr = [];
 
-//api 받아옴
-getApi().then(() => {
-  makeCard();
-});
+// //api 받아옴
+// getApi().then(() => {
+//   makeCard();
+//   cardDiv.replaceChildren();
+// });
+
+for (let i = 1; i <= 10; i++) {
+  fetchMovieData(i)
+    .then((data) => {
+      data.forEach((e) => {
+        movieArr.push(e);
+      });
+      makeCard();
+      cardDiv.replaceChildren();
+    })
+    .catch((error) => {
+      console.error("Error fetching movie data:", error);
+    });
+}
 
 //movieArr값 movieCard에 넣기
 const makeCard = () => {
@@ -18,14 +35,17 @@ const makeCard = () => {
 };
 
 //전체보기 클릭 시
+const movieCardsDiv = document.getElementById("cardsDiv");
 const allMovieListBtn = document.getElementById("showAllMoive");
 allMovieListBtn.addEventListener("click", () => {
+  movieCardsDiv.style.display = "grid";
   div.replaceChildren();
   moveDiv();
   cardDiv.replaceChildren();
   showCategory();
   makeCard();
 });
+
 
 //엔터 누를 시
 let inputText = document.getElementById("searchInput");
@@ -34,6 +54,9 @@ inputText.addEventListener("keydown", (e) => {
     e.preventDefault();
     div.replaceChildren();
     if (inputText.value !== "") {
+      // 초기화면에서 검색 버튼 클릭 시 card-section-container 숨기기 05/08 재영추가
+      document.querySelector(".card-section-container").style.display = "none";
+
       moveDiv();
       showCategory();
       showMoiveCard();
@@ -72,9 +95,9 @@ export const movieCard = (item) => {
 
   //만들어진 카드 Map에 저장
   movieMap.set(movieTitle, movieCard);
-
   movieCard.addEventListener("click", () => {
-    alert(`Movie Id : ${movieId}`);
+    window.location.href = "../page/movieDetail.html";
+    localStorage.setItem("currentID", movieId);
   });
 
   //Div안에 카드 넣기
@@ -92,10 +115,14 @@ const showMoiveCard = () => {
       cardDiv.appendChild(movieMap.get(movieTitle));
     }
   });
+
+  // 검색 결과가 없는 경우 처리 05/08 재영추가
+  if (cardDiv.children.length === 0) {
+    notFound();
+  }
 };
 
 /** 검색 기능 구현 */
-
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 const boxDiv = document.getElementById("similarTitle");
@@ -106,6 +133,9 @@ searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
   let inputText = document.getElementById("searchInput").value;
   if (inputText !== "") {
+
+    // 초기화면에서 검색 버튼 클릭 시 card-section-container 숨기기 05/08 재영추가
+    document.querySelector(".card-section-container").style.display = "none";
     div.replaceChildren();
     moveDiv();
     showCategory();
@@ -135,7 +165,7 @@ searchInput.addEventListener("input", () => {
     }
   });
 
-  //연관검색어 5개까지
+//연관검색어 5개까지
   if (similarTitle.length > 5) {
     for (let i = 0; i < 5; i++) {
       similar(similarTitle[i]);

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Night</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/movieDetail.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!--로고-->
+    <div class="logo">
+      <img src="" />
+      <a href="../index.html"><p class="logo-text">Movie Night</p></a>
+    </div>
+    <!--영화 세부정보-->
+    <!-- 택수님 부분 -->
+    <div class="movie">
+      <div class="movie-poster">
+        <img class="movieimg" alt="...">
+      </div>
+      <div class="movie-info">
+        <h1 class="movietitle">제목</h1>
+        <div class="space-between">
+          <p class="genre">장르</p>
+          <p class="rating">평점</p>
+        </div>
+        <p class="etperiod">방송기간</p>
+        <p class="etcount">방송횟수</p>
+        <p class="summary">줄거리</p>
+      </div>
+    </div>
+    <!--review-->
+    <div class="review">
+      <div class="review-title">
+        <p class="review-title-text">Reviews</p>
+      </div>
+      <div class="review-write-box">
+        <!--영은님 부분-->
+        <!-- password modal-->
+        <div class="password">
+          <div class="modal">
+            <p>Enter the Password</p>
+            <input type="password" class="password-input" placeholder="password" maxlength="10" />
+            <button class="password-btn">Enter</button>
+          </div>
+        </div>
+        <div class="review-head">
+          <input class="review-name" placeholder="Name" maxlength="15" />
+          <div class="star-container">
+            <label class="star-label">
+              <input value="1" class="star-radio" type="radio" />
+              <span class="star-icon"></span>
+            </label>
+            <label class="star-label">
+              <input value="2" class="star-radio" type="radio" />
+              <span class="star-icon"></span>
+            </label>
+            <label class="star-label">
+              <input value="3" class="star-radio" type="radio" />
+              <span class="star-icon"></span>
+            </label>
+            <label class="star-label">
+              <input value="4" class="star-radio" type="radio" />
+              <span class="star-icon"></span>
+            </label>
+            <label class="star-label">
+              <input value="5" class="star-radio" type="radio" />
+              <span class="star-icon"></span>
+            </label>
+          </div>
+        </div>
+        <textarea class="review-comment" placeholder="Enter the review" cols="70" rows="5" maxlength="350"></textarea>
+        <button class="review-btn">Enter</button>
+      </div>
+      <!--최연님부분-->
+      <div class="review-list-box">
+        <button id="toggle-btn">모두보기</button>
+        <div id="review-base"></div>
+        <div id="review-toggle"></div>
+      </div>
+      <div class="pw-check">
+        <div class="modal">
+          <div class="enter-password">
+            <p>Enter the Password</p>
+            <button class="modal-close">X</button>
+          </div>
+          <input type="password" class="password-input" placeholder="password" maxlength="10" />
+          <button class="password-btn">Enter</button>
+        </div>
+      </div>
+      <div class="comment-change">
+        <div class="modal">
+          <div class="enter-password">
+            <p>Enter the Comment</p>
+            <button class="modal-close">X</button>
+          </div>
+          <input type="text" class="password-input" placeholder="Comment" maxlength="100" />
+          <button class="password-btn">Enter</button>
+        </div>
+      </div>
+    </div>
+    <script src="../js/movieDetail.js"></script>
+    <script type="module" src="../js/reviewStar.js"></script>
+    <script type="module" src="../js/reviewCreate.js"></script>
+    <script type="module" src="../js/reviewRUD.js"></script>
+  </body>
+</html>
