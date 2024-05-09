@@ -52,11 +52,10 @@ a {
   background-color: transparent;
 }
 
-.movieimg {
-  height: 100%;
-  width: 100%;
-  border:1px solid white;
-  padding: 0px;
+.movie-poster {
+  background-color: whitesmoke;
+  height: 80%;
+  width: 40%;
 }
 
 .movieimg {
