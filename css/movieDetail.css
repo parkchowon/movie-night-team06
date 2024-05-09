@@ -58,10 +58,59 @@ a {
   width: 40%;
 }
 
+.movieimg {
+  height: 100%;
+  width: 100%;
+  border:1px solid white;
+  padding: 0px;
+}
+
 .movie-info {
-  background-color: whitesmoke;
   height: 80%;
   width: 40%;
+}
+
+.movietitle {
+  color: white;
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating {
+  color: white;
+  text-align: right;
+}
+
+.genre {
+  color: white;
+}
+
+.etperiod {
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.etcount {
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.summary {
+  color: white;
+  margin-top: 150px;
+  margin-bottom: 10px;
+  border-top: 1px solid white; /* 1px 두께의 회색 직선 */
+  padding-top: 10px; /* 직선과 텍스트 사이에 간격 추가 */
 }
 
 /* 리뷰 최상단 div */
