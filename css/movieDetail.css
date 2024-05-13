@@ -11,6 +11,23 @@
   align-items: center;
 }
 
+.load {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: block;
+}
+
+.load > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+}
+
 /* logo 최상단 div */
 .logo {
   height: 120px;
@@ -61,7 +78,7 @@ a {
 .movieimg {
   height: 100%;
   width: 100%;
-  border:1px solid white;
+  border: 1px solid white;
   padding: 0px;
 }
 
@@ -80,14 +97,13 @@ a {
 
 .space-between {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  text-align: left;
 }
 
 .rating {
   color: white;
-  text-align: right;
-  margin-top: 150px;
+  margin-top: 10px;
 }
 
 .genre {
@@ -108,10 +124,10 @@ a {
 
 .summary {
   color: white;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 10px;
   border-top: 1px solid white; /* 1px 두께의 회색 직선 */
-  padding-top: 10px; /* 직선과 텍스트 사이에 간격 추가 */
+  padding-top: 20px; /* 직선과 텍스트 사이에 간격 추가 */
 }
 
 /* 리뷰 최상단 div */
@@ -258,22 +274,28 @@ a {
 
 /* 리뷰 list 담는 div */
 .review-list-box {
-  width: 52%;
-  height: 500px; /*임의 값이에요!*/
+  width: 50%;
+  height: fit-content;
   background-color: transparent;
-  margin: 0 auto;
-  padding: 2% 3%;
-  position: relative;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .review-list-box button {
   color: white;
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  border: 1.5px solid white;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 40px;
+  padding: 5px 15px;
+  justify-content: center;
+  border: 1px solid white;
+  font-size: 16px;
+  margin: 30px 20% 100px 20%;
+}
+
+.btns button {
+  color: white;
+  margin: 0;
+  padding: 0;
 }
 
 .review-list-box button.clicked {
@@ -284,7 +306,7 @@ a {
 .review-item {
   width: 95%;
   height: 150px;
-  margin: 30px 0;
+  margin: 30px 0 0 0;
   border-radius: 20px;
   background-color: gray;
   padding: 25px 35px;
@@ -318,15 +340,14 @@ a {
 }
 
 #review-toggle {
-  visibility: hidden;
-  opacity: 0%;
+  display: none;
   transform: translateX(-100px);
   transition: all 0.3s;
 }
 
 #review-toggle.clicked {
-  visibility: visible;
-  opacity: 100%;
+  display: block;
+
   transform: translateX(0px);
 }
 
@@ -421,7 +442,7 @@ a {
   border: transparent;
   font-size: 25px;
   font-weight: 600;
-  margin-left: 25px;  
+  margin-left: 25px;
 }
 
 .btns {

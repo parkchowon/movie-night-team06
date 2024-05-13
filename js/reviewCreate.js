@@ -1,12 +1,11 @@
 import { Checked } from "./reviewStar.js";
 
-let userName = document.querySelector(".review-name");  
-let comment = document.querySelector(".review-comment");
-let registerBtn = document.querySelector(".review-btn");
-let passwordBox = document.querySelector(".password");
-let passwordModal = document.querySelector(".modal");
-let passwordInput = document.querySelector(".password-input");
-let passwordBtn = document.querySelector(".password-btn");
+const userName = document.querySelector(".review-name");
+const comment = document.querySelector(".review-comment");
+const registerBtn = document.querySelector(".review-btn");
+const passwordBox = document.querySelector(".password");
+const passwordInput = document.querySelector(".password-input");
+const passwordBtn = document.querySelector(".password-btn");
 
 let reviewStorage = [];
 
@@ -99,8 +98,7 @@ const saveReview = () => {
 //리뷰 등록함수
 const registReview = () => {
   localStorage.setItem("reviews", JSON.stringify(reviewStorage));
-  window.location.reload()
-  console.log(JSON.parse(localStorage.getItem("reviews")));
+  window.location.reload();
 };
 
 //input reset함수

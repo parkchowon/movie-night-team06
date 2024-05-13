@@ -256,3 +256,55 @@ body {
   color: white;
   font-family: "Roboto Slab", serif;
 }
+
+.swiper {
+  width: 100%;
+}
+
+.swiper-slide {
+  width: 200px !important;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.slide-back {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  top: 50%;
+  background: linear-gradient(transparent, black);
+}
+
+.slide-img {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  height: 300px;
+}
+
+.slide-title {
+  position: absolute;
+  color: white;
+  top: 80%;
+  left: 7%;
+  text-overflow: ellipsis;
+  font-size: 27px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 180px;
+}
+
+.slide-div {
+  position: absolute;
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+  color: white;
+  top: 90%;
+  left: 7%;
+}

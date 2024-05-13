@@ -10,21 +10,21 @@ document.querySelector(".review-title").insertAdjacentHTML("beforeend", temp_htm
 //리뷰 만드는 함수
 let makeReview = function (locationId, i) {
   let starObj = {
-    0: `../moon_icon/moon1.png`,
-    1: `../moon_icon/moon2.png`,
-    2: `../moon_icon/moon3.png`,
-    3: `../moon_icon/moon4.png`,
-    4: `../moon_icon/moon5.png`,
-    5: `../moon_icon/moon6.png`,
+    0: `../img/moon1.png`,
+    1: `../img/moon2.png`,
+    2: `../img/moon3.png`,
+    3: `../img/moon4.png`,
+    4: `../img/moon5.png`,
+    5: `../img/moon6.png`,
   };
-  let present = nowArr[i]; 
+  let present = nowArr[i];
   if (!present) return; //값이 unD or null 값이 와도 프로그램이 깨지지 않도록 함수 중간에서 리턴 시켜 중단
   let name = present.name;
   let comment = present.comment;
   let starNum = present.star;
   let userId = present.id;
   let star = starObj[starNum];
-  
+
   let temp_html = `  
     <div class = "review-item" id = "${userId}">
       <span>${name} <img src = ${star} /></span>   
@@ -39,7 +39,7 @@ let makeReview = function (locationId, i) {
 };
 
 //리뷰 만드는 함수 작동
-window.onload = function () {
+window.addEventListener("load", function () {
   for (let i = 0; i < 3; i++) {
     makeReview("review-base", i);
   }
@@ -47,7 +47,7 @@ window.onload = function () {
   for (let i = 3; i < len; i++) {
     makeReview("review-toggle", i);
   }
-};
+});
 
 //토글버튼
 const toggleBtn = document.getElementById("toggle-btn");
@@ -62,24 +62,26 @@ toggleBtn.addEventListener("click", function () {
   }
 });
 
-// 수정&삭제 part 
-let dataId
-let parameter2
+// 수정&삭제 part
+let dataId;
+let parameter2;
 
 //pwCheck modal창의 enter를 누르면 비밀번호 확인 함수로 넘어가게 지정
 document.querySelector(".pw-check .password-btn").addEventListener("click", () => {
   checkPassword();
 });
-  
+
 //수정, 삭제 버튼 작동
 let eventDeleg = document.querySelector(".review-list-box"); //이벤트 위임
 eventDeleg.addEventListener("click", function (event) {
-  dataId = event.target.closest(".review-item").id; 
+  dataId = event.target.closest(".review-item").id;
 
-  if (event.target.matches(".editBtn")) {   //수정버튼 눌렀을 경우
+  if (event.target.matches(".editBtn")) {
+    //수정버튼 눌렀을 경우
     openModal("pwCheck");
     parameter2 = "editReivew";
-  } else if (event.target.matches(".deletBtn")) {   //삭제버튼 눌렀을 경우
+  } else if (event.target.matches(".deletBtn")) {
+    //삭제버튼 눌렀을 경우
     openModal("pwCheck");
     parameter2 = "deletReivew";
   } else {
@@ -88,7 +90,7 @@ eventDeleg.addEventListener("click", function (event) {
 });
 
 //패스워드 확인
-let checkPassword = function () {  
+let checkPassword = function () {
   let pwInput = document.querySelector(".pw-check .password-input");
   let idPw = reviewArr.find((el) => el.id === parseInt(dataId));
   if (pwInput.value === idPw.password) {
@@ -104,7 +106,8 @@ let nextFunction = function () {
   if (parameter2 === "editReivew") {
     openModal("modifiedCommentInput");
     commentEnterAfterEdit();
-  } else {  //"deletReview" 경우
+  } else {
+    //"deletReview" 경우
     deletReivew();
     closeModal();
   }
@@ -136,8 +139,8 @@ let commentEnterAfterEdit = function () {
   document.querySelector(".comment-change .password-btn").addEventListener("click", function () {
     editReivew();
     closeModal();
-  });  
-}; 
+  });
+};
 
 //모달창 띄우기
 let openModal = function (modalType) {

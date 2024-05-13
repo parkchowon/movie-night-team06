@@ -1,8 +1,7 @@
 // import getApi from "./apis.js";
 // import { movieArr } from "./apis.js";
 import { fetchMovieData } from "./apis.js";
-import { showCategory, moveDiv, similar, notFound } from "./assets.js";
-import { div } from "./assets.js";
+import { div, moveDiv, notFound, showCategory, similar } from "./assets.js";
 let movieMap = new Map(); //movie 카드 저장할 map
 let cardDiv = document.getElementById("cardsDiv"); //card들을 넣을 div
 let movieArr = [];
@@ -60,7 +59,6 @@ inputText.addEventListener("keydown", (e) => {
     } else {
       alert("Enter the text");
     }
-    console.log(`enter ${inputText}`);
   }
 });
 
@@ -77,7 +75,7 @@ export const movieCard = (item) => {
 
   //movie card
   movieCard.innerHTML = `
-        <img class="card-img" src ="http://image.tmdb.org/t/p/w200/${moviePoster}" />
+        <img class="slide-img" src ="http://image.tmdb.org/t/p/w200/${moviePoster}" />
         <p class="card-title">${movieTitle}</p>
         <div class="vote-div">
         <p>⭐</p>
@@ -89,7 +87,7 @@ export const movieCard = (item) => {
   //만들어진 카드 Map에 저장
   movieMap.set(movieTitle, movieCard);
   movieCard.addEventListener("click", () => {
-    window.location.href = "../page/movieDetail.html";
+    window.location.href = "./movieDetail.html";
     localStorage.setItem("currentID", movieId);
   });
 
@@ -101,7 +99,6 @@ export const movieCard = (item) => {
 const showMoiveCard = () => {
   cardDiv.replaceChildren();
   let text = searchInput.value.toLowerCase();
-  console.log("text input:", text);
   movieArr.forEach((item) => {
     let movieTitle = item["name"];
     if (movieTitle.toLowerCase().includes(text)) {

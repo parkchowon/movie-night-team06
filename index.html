@@ -9,10 +9,8 @@
     <link rel="stylesheet" href="./css/home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   </head>
   <body>
     <div class="wrapper">
@@ -20,9 +18,7 @@
       <div id="main" class="main">
         <header id="header" class="header">
           <p id="logo" class="header-title-text">Movie Night</p>
-          <button id="showAllMoive" class="header-all-movie-list-btn">
-            See All
-          </button>
+          <button id="showAllMoive" class="header-all-movie-list-btn">See All</button>
         </header>
         <!-- 영화 검색 창 -->
         <form id="searchDiv" class="search-box-container">
@@ -40,13 +36,8 @@
         </form>
       </div>
       <!-- 슬라이드에 사용하는 영화 리스트 -->
-      <div id="containerToHide"></div>
-      <div class="card-section-container">
-      <button id="moveLeftButton">&lt;</button>
-      <button id="moveRightButton">&gt;</button>
-      <div id="cardSection1" class="card-section"></div>       
-      <div id="cardSection2" class="card-section"></div>    
-      </div>
+      <div id="swiper" class="swiper mySwiper">
+        <div id="swiper-wrapper" class="swiper-wrapper"></div>
       </div>
       <!-- 영화 리스트 -->
       <div id="cardDiv" class="movie-container">
@@ -57,6 +48,7 @@
         <div id="cardsDiv" class="movie-cards-div"></div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="./js/slider.js"></script>
     <script type="module" src="./js/home.js"></script>
   </body>
